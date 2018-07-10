@@ -17,15 +17,9 @@ public class FileMergeTriggerImpl implements FileMergeTrigger {
 
     private static Integer x = 0;
 
-    private static Map<Integer, List<String>> map = new HashMap<>();
-
-    private static Integer y = 1;
-
-
-//    @Override
-    public static String merge(List<String> fileList) {
+    @Override
+    public String merge(List<String> fileList) {
         try {
-
             if(fileList.size()==1){
                 LOG.info("merge file success");
                 System.out.println("merge file success");
@@ -36,7 +30,6 @@ public class FileMergeTriggerImpl implements FileMergeTrigger {
 
             int i;
             for (i = 0; i <= (fileList.size() - 2); i += 2) {
-
                 String path = hebing(fileList.get(i), fileList.get(i + 1), x);
                 list.add(path);
                 x++;
@@ -44,8 +37,6 @@ public class FileMergeTriggerImpl implements FileMergeTrigger {
             if(i==(fileList.size()-1)) {
                 list.add(fileList.get(fileList.size() - 1));
             }
-//        map.put(y, list);
-//        y++;
             return merge(list);
         }catch (Exception e){
             LOG.error("merge file error:",e);
@@ -119,16 +110,5 @@ public class FileMergeTriggerImpl implements FileMergeTrigger {
         return null;
     }
 
-    public static void main(String[] args) {
-        String f1 = "F:\\test\\a.txt";
-        String f2 = "F:\\test\\b.txt";
-        String f3 = "F:\\test\\c.txt";
-
-        List<String> list =new ArrayList();
-        list.add(f1);
-        list.add(f2);
-        list.add(f3);
-        merge(list);
-    }
 }
 

@@ -13,13 +13,8 @@ import java.util.List;
  */
 public class WriteFileMonitorImpl implements WriteFileMonitor {
 
-
+    //生成文件的规则
     private static Integer strategy =0;
-
-//    private static Map<Integer,List<String>> saveFileInfo=new HashMap<>();
-//
-//    private static Integer y =1;
-
 
     private static List<String> list =new ArrayList<>();
 

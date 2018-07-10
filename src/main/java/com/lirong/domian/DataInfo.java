@@ -9,10 +9,19 @@ public class DataInfo implements Comparable,DataFormat<DataInfo> {
 
     private String dataValue;
 
+    private static String sign;
 
     public DataInfo(String dataKey, String dataValue) {
         this.dataKey = dataKey;
         this.dataValue = dataValue;
+    }
+
+    public static String getSign() {
+        return sign;
+    }
+
+    public static void setSign(String sign) {
+        DataInfo.sign = sign;
     }
 
     public String getDataKey() {

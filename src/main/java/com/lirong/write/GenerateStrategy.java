@@ -4,9 +4,9 @@ package com.lirong.write;
  * @author LiRong
  */
 public class GenerateStrategy {
-
+    //融合递归的目录
     private static String generatePath;
-
+    //第一次的准备目录
     private static String perMergeFile;
 
     public static String getPerMergeFile() {
@@ -27,14 +27,12 @@ public class GenerateStrategy {
 
     public static String preMerge(Integer i){
 
-        String prePath =perMergeFile;
-        return prePath + i + ".txt";
+        return perMergeFile + i + ".txt";
     }
 
     public static String generatePath(Integer i){
 
-        String prePath =generatePath;
-        return prePath + i + ".txt";
+        return generatePath + i + ".txt";
     }
 
 }

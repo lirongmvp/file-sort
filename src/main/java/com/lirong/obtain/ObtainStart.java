@@ -30,8 +30,11 @@ public class ObtainStart implements ObtainData {
 
     private static boolean READ_OVER=false;
 
-    public ObtainStart(String fmt) {
+    private Integer readNum;
+
+    public ObtainStart(String fmt, Integer readNum) {
         this.fmt = fmt;
+        this.readNum = readNum;
     }
 
     @Override
@@ -42,6 +45,10 @@ public class ObtainStart implements ObtainData {
             transfer(dataInfo);
         },dataSource.getFilePath());
 
+        if(dataInfoList.size()>0){
+            WriteFileMonitor writeFileMonitor = new WriteFileMonitorImpl();
+            writeFileMonitor.write(dataInfoList);
+        }
         this.stop();
     }
 
@@ -53,7 +60,7 @@ public class ObtainStart implements ObtainData {
         List<String> list = writeFileMonitor.call();
         Dispatch dispatch = new Dispatch();
         dispatch.dispatch(list);
-        dispatch.canMeger();
+        dispatch.canMerge();
     }
 
 
@@ -62,31 +69,13 @@ public class ObtainStart implements ObtainData {
         dataInfoList.add(dataInfo);
         Collections.sort(dataInfoList);
         WriteFileMonitor writeFileMonitor;
-        if(dataInfoList.size()==3){
+        if(dataInfoList.size()==readNum){
             writeFileMonitor = new WriteFileMonitorImpl();
             writeFileMonitor.write(dataInfoList);
             dataInfoList.clear();
         }
-        if(READ_OVER){
-            if(dataInfoList.size()!=0) {
-                writeFileMonitor = new WriteFileMonitorImpl();
-                writeFileMonitor.write(dataInfoList);
-            }else {
-                writeFileMonitor = new WriteFileMonitorImpl();
-                writeFileMonitor.write(new ArrayList<>());
-            }
 
-        }
     }
 
-
-    public static void main(String[] args) {
-
-        DataSource source = new DataSource("F:\\test\\test.txt");
-
-        ObtainStart start = new ObtainStart("-");
-
-        start.obtain(source);
-    }
 
 }
