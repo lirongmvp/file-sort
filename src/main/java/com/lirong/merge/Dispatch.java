@@ -16,7 +16,8 @@ public class Dispatch {
 
     public void canMerge(){
         FileMergeTrigger trigger =new FileMergeTriggerImpl();
-        trigger.merge(filePathList);
+        String merge = trigger.merge(filePathList);
+        System.out.println(merge);
     }
 
 }

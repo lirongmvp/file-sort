@@ -91,6 +91,6 @@ public class DataInfo implements Comparable,DataFormat<DataInfo> {
     @Override
     public String Obj2Str() {
 
-        return this.getDataKey()+"-----"+this.getDataValue();
+        return this.getDataKey()+sign+this.getDataValue();
     }
 }

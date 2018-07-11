@@ -19,12 +19,13 @@ public class FileMergeTriggerImpl implements FileMergeTrigger {
 
     @Override
     public String merge(List<String> fileList) {
+
+
         try {
             if(fileList.size()==1){
                 LOG.info("merge file success");
                 System.out.println("merge file success");
                 return "OK";
-
             }
             List<String> list = new ArrayList();
 
